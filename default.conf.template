@@ -1,0 +1,7 @@
+server {
+    listen ${NGINX_HTTPS_PORT} ssl;
+    server_name $host;
+    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key; 
+    return 308 http://$host:${NGINX_HTTP_PORT}$request_uri;
+}
